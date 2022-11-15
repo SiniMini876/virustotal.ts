@@ -1,13 +1,20 @@
 {
 	"name": "virustotal.ts",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Use the Virus Total API 3 with Node.js",
 	"main": "build/index.js",
 	"type": "module",
 	"files": [
-		"build/**/*"
+		"build/"
 	],
-	"types": "types/index.d.ts",
+	"module": "dist/index.mjs",
+	"exports": {
+		".": {
+			"import": "./build/index.js"
+		},
+		"./src/*": "./build/*",
+		"./build/*": "./build/*"
+	},
 	"scripts": {
 		"build": "tsc",
 		"watch": "tsc --watch",
