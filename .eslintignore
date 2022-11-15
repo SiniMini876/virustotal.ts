@@ -1,0 +1,12 @@
+/node_modules
+/build
+.env
+eslintrc.js
+.editorconfig
+.prettierignore
+.prettierrc
+.gitignore
+.eslintignore
+tsconfig.json
+package.json
+package-lock.json
