@@ -15,6 +15,15 @@
 		"./src/*": "./build/*",
 		"./build/*": "./build/*"
 	},
+	"keywords": [
+		"virustotal",
+		"api",
+		"virustotal-api",
+		"virustotal-api3",
+		"virustotal-api-3",
+		"virustotal-api-v3",
+		"typescript"
+	],
 	"scripts": {
 		"build": "tsc",
 		"watch": "tsc --watch",

@@ -8,5 +8,6 @@ eslintrc.js
 .gitignore
 .eslintignore
 tsconfig.json
-package.json
+# package.json
+README.md
 package-lock.json
