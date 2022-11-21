@@ -32,10 +32,10 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: |
-          if [[ -v ${{ github.event.inputs.version }} ]]; then
-            echo "`jq '.version = "${{ github.event.inputs.version }}"' package.json`" > package.json
-          else
+          if [ "${{ github.event.inputs.version }}" == "" ]; then
             echo ""
+          else
+            echo "`jq '.version = "${{ github.event.inputs.version }}"' package.json`" > package.json
           fi
       - run: npm ci
       - run: npm publish --@myscope:registry=https://registry.npmjs.org/
@@ -52,10 +52,10 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: echo "`jq '.name = "@sinimini876/virustotal.ts"' package.json`" > package.json
       - run: |
-          if [[ -v ${{ github.event.inputs.version }} ]]; then
-            echo "`jq '.version = "${{ github.event.inputs.version }}"' package.json`" > package.json
-          else
+          if [ "${{ github.event.inputs.version }}" == "" ]; then
             echo ""
+          else
+            echo "`jq '.version = "${{ github.event.inputs.version }}"' package.json`" > package.json
           fi
       - run: npm ci
       - run: npm publish --@myscope:registry=https://npm.pkg.github.com/
