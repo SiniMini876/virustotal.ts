@@ -44,12 +44,10 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: |
-             echo "`jq '.name = "@sinimini876/virustotal.ts"' package.json`" > package.json
-      - run: |
-             echo "`jq '.version = "$VERSION"' package.json`" > package.json
+      - run: echo "`jq '.name = "@sinimini876/virustotal.ts"' package.json`" > package.json
+      - run: echo "`jq '.version = "$VERSION"' package.json`" > package.json
         env:
-             VERSION: ${{ inputs.version}}
+          VERSION: ${{ inputs.version}}
       - run: npm ci
       - run: npm publish --@myscope:registry=https://npm.pkg.github.com/
         env:
