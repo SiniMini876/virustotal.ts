@@ -32,7 +32,7 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: |
-          if [[ -z "${{ github.event.inputs.version }}" ]]; then
+          if [[ -v ${{ github.event.inputs.version }} ]]; then
             echo "`jq '.version = "${{ github.event.inputs.version }}"' package.json`" > package.json
           else
             echo ""
@@ -52,7 +52,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: echo "`jq '.name = "@sinimini876/virustotal.ts"' package.json`" > package.json
       - run: |
-          if [[ -z "${{ github.event.inputs.version }}" ]]; then
+          if [[ -v ${{ github.event.inputs.version }} ]]; then
             echo "`jq '.version = "${{ github.event.inputs.version }}"' package.json`" > package.json
           else
             echo ""
