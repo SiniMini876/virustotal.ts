@@ -4,6 +4,12 @@
 name: Node.js Package
 
 on:
+  workflow_dispatch:
+	  inputs:
+			version:
+				description: 'Version'
+				required: true
+				default: '0.0.0'
   release:
     types: [created]
 
@@ -16,7 +22,6 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
@@ -27,6 +32,25 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm publish
+      - run: npm publish --@myscope:registry=https://registry.npmjs.org/
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.registry_npm_token}}
+  publish-github:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+			- run: |
+					echo "`jq '.name = "@sinimini876/virustotal.ts"' package.json`" > package.json
+      - run: |
+					echo "`jq '.version = "$VERSION"' package.json`" > package.json
+				env:
+					VERSION: ${{ inputs.version}}
+			- run: npm ci
+      - run: npm publish --@myscope:registry=https://npm.pkg.github.com/
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.registry_github_token}}
