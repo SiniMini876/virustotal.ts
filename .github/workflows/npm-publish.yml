@@ -5,11 +5,11 @@ name: Node.js Package
 
 on:
   workflow_dispatch:
-	  inputs:
-			version:
-				description: 'Version'
-				required: true
-				default: '0.0.0'
+    inputs:
+      version:
+        description: 'Version'
+        required: true
+        default: '0.0.0'
   release:
     types: [created]
 
@@ -44,13 +44,13 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-			- run: |
-					echo "`jq '.name = "@sinimini876/virustotal.ts"' package.json`" > package.json
       - run: |
-					echo "`jq '.version = "$VERSION"' package.json`" > package.json
-				env:
-					VERSION: ${{ inputs.version}}
-			- run: npm ci
+             echo "`jq '.name = "@sinimini876/virustotal.ts"' package.json`" > package.json
+      - run: |
+             echo "`jq '.version = "$VERSION"' package.json`" > package.json
+        env:
+             VERSION: ${{ inputs.version}}
+      - run: npm ci
       - run: npm publish --@myscope:registry=https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{secrets.registry_github_token}}
