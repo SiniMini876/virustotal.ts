@@ -1,5 +1,11 @@
 # virustotal.ts
 
+[![Node.js Package](https://github.com/SiniMini876/virustotal.ts/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/SiniMini876/virustotal.ts/actions/workflows/npm-publish.yml) 
+<a href="https://www.npmjs.com/package/virustotal.ts"><img src="https://img.shields.io/npm/v/virustotal.ts.svg?maxAge=3600" alt="npm version" /></a>
+<a href="https://www.npmjs.com/package/virustotal.ts"><img src="https://img.shields.io/npm/dm/virustotal.ts.svg?maxAge=3600" alt="npm downloads" /></a>
+
+[![NPM](https://nodei.co/npm/virustotal.ts.png?mini=true)](https://npmjs.org/package/virustotal.ts)
+
 A package to communicate with the Virus Total API V3! <br>
 I've made this as a hobby and it's a really starter stage so don't expect it to work perfectly.<br>
 I had to implement the `VTClient.files.scanFile` method with the v2 api because the v3 api on this endpoint is kinda broken.<br>
