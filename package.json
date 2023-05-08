@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/SiniMini876/virustotal.ts#readme",
   "devDependencies": {
-    "@types/node": "^18.11.9",
+    "@types/node": "^20.1.0",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "dotenv": "^16.0.3",
